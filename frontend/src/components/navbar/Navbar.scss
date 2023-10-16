@@ -20,6 +20,9 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background: rgb(180, 39, 180);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 
     img {
         width: 90px;
@@ -29,6 +32,11 @@
             width: 180px;
             height: 40px;
         }
+    }
+
+    .app__navbar-text {
+        font-weight: 400;
+        color: white;
     }
 }
 

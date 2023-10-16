@@ -12,7 +12,7 @@ const Navbar = () => {
     // Desktop Menu
     <nav className='app__navbar'>
       <div className='app__navbar-logo'>
-        <img src={image.logo} alt='logo' />
+        <h1 className='app__navbar-text'>A</h1>
       </div>
       <ul className='app__navbar-links'>
         {["home", "about", "work", "contact", "skills"].map((item) => (
