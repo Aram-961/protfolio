@@ -1,10 +1,10 @@
+/* eslint-disable react-refresh/only-export-components */
 import "./Skills.scss";
 import { useState, useEffect } from "react";
-import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-import { AppWrap } from "../../wrapper";
+import { AnimateWrap, AppWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
-// import {ReactToolTip} from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 const Skills = () => {
   const [experience, setExperience] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -14,6 +14,7 @@ const Skills = () => {
     const skillsQuery = '*[_type == "skills"]';
 
     client.fetch(query).then((data) => {
+      // console.log(data);
       setExperience(data);
     });
 
@@ -42,9 +43,49 @@ const Skills = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.div className='app__skills-experience'>
+          {console.log("here:", experience)}
+          {experience?.map((experience) => (
+            <motion.div
+              className='app__skills-experience-item'
+              key={experience.year}>
+              <div className='app__skills-experience-year'>
+                <p className='bold-text'>{experience.year}</p>
+              </div>
+              <motion.div className='app__skills-exp-works'>
+                {experience.works.map((work) => (
+                  <>
+                    <motion.div
+                      whileInView={{ opacity: [0, 1] }}
+                      transition={{ duration: 0.5 }}
+                      className='app__skills-exp-work'
+                      data-tooltip-id
+                      data-tooltip-content={work.name}
+                      key={work.name}>
+                      <h4 className='bold-text'>{work.name}</h4>
+                      <p className='p-text'>{work.company}</p>
+                    </motion.div>
+                    <ReactTooltip
+                      id={work.name}
+                      effect='solid'
+                      arrowColor='#fff'
+                      className='skills-tooltip'>
+                      {work.desc}
+                    </ReactTooltip>
+                  </>
+                ))}
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </>
   );
 };
 
-export default Skills;
+export default AppWrap(
+  AnimateWrap(Skills, "app__skills"),
+  "skills",
+  "app__whitebg"
+);

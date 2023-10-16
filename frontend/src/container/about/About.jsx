@@ -1,9 +1,10 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState, useEffect } from "react";
 // import images from "../../constants/images";
 import { motion } from "framer-motion";
 import "./About.scss";
 import { urlFor, client } from "../../client";
-import { AppWrap } from "../../wrapper";
+import { AppWrap, AnimateWrap } from "../../wrapper";
 const About = () => {
   const [abouts, setAbouts] = useState([]);
 
@@ -39,4 +40,8 @@ const About = () => {
   );
 };
 
-export default AppWrap(About, "about");
+export default AppWrap(
+  AnimateWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
+);

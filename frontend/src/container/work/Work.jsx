@@ -1,8 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 import "./Work.scss";
 import { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-import { AppWrap } from "../../wrapper";
+import { AnimateWrap, AppWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 
 const Work = () => {
@@ -60,7 +61,6 @@ const Work = () => {
 
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
-                // staggerChildren means that the elements are going to show one by one in 0.5s
                 transition={{
                   duration: 0.25,
                   ease: "easeInOut",
@@ -76,15 +76,18 @@ const Work = () => {
                     <AiFillEye />
                   </motion.div>
                 </a>
-                <a href={work.codeLink} target='_blank' rel='noreferrer'>
-                  <motion.div
-                    whileHover={{ opacity: [1, 0.9] }}
-                    whileInView={{ scale: [0, 1] }}
-                    transition={{ duration: 0.25 }}
-                    className='app__flex'>
-                    <AiFillGithub />
-                  </motion.div>
-                </a>
+                {!work.tags.includes("UI/UX") &&
+                  work.title !== "Orcania DeFi 2.0 DEX" && (
+                    <a href={work.codeLink} target='_blank' rel='noreferrer'>
+                      <motion.div
+                        whileHover={{ opacity: [1, 0.9] }}
+                        whileInView={{ scale: [0, 1] }}
+                        transition={{ duration: 0.25 }}
+                        className='app__flex'>
+                        <AiFillGithub />
+                      </motion.div>
+                    </a>
+                  )}
               </motion.div>
             </div>
 
@@ -105,4 +108,8 @@ const Work = () => {
   );
 };
 
-export default AppWrap(Work, "Work");
+export default AppWrap(
+  AnimateWrap(Work, "app__works"),
+  "work",
+  "app__primarybg"
+);
