@@ -11,6 +11,22 @@ const Footer = () => {
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [Email, setEmail] = useState("");
+  const [isValid, setIsValid] = useState(true);
+
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    // Regular expression for basic email validation
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    // Test if the email matches the regex pattern
+    const isValidEmail = emailRegex.test(newEmail);
+
+    // Update the validation state
+    setIsValid(isValidEmail);
+  };
 
   const { name, email, message } = formData;
 
@@ -35,6 +51,8 @@ const Footer = () => {
       setLoading(false);
       setIsFormSubmitted(true);
     });
+
+    handleChangeInput();
   };
 
   return (
@@ -65,6 +83,7 @@ const Footer = () => {
               value={name}
               onChange={handleChangeInput}
               name='name'
+              required
             />
           </div>
           <div className='app__flex'>
@@ -74,16 +93,20 @@ const Footer = () => {
               placeholder='email'
               value={email}
               onChange={handleChangeInput}
+              style={{ borderColor: isValid ? "initial" : "red" }}
               name='email'
+              required
             />
+            {isValid ? null : <p>Please enter a valid email address.</p>}
           </div>
           <div>
             <textarea
               className='p-text'
               placeholder='message ...'
               value={message}
-              name="message"
+              name='message'
               onChange={handleChangeInput}
+              required
             />
           </div>
           <button type='button' className='p-text' onClick={handleSubmit}>
