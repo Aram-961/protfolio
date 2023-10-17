@@ -52,12 +52,12 @@ const Footer = () => {
       setIsFormSubmitted(true);
     });
 
-    handleChangeInput();
+    handleEmailChange();
   };
 
   return (
     <>
-      <h2 className='head-text'>Take a coffee and chat wit me</h2>
+      <h2 className='head-text'>lets get in touch ❣️</h2>
       <div className='app__footer-cards'>
         <div className='app__footer-card'>
           <img src={images.email} alt='email' />
