@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useEffect } from "react";
-// import images from "../../constants/images";
 import { motion } from "framer-motion";
 import "./About.scss";
 import { urlFor, client } from "../../client";
 import { AppWrap, AnimateWrap } from "../../wrapper";
+
 const About = () => {
   const [abouts, setAbouts] = useState([]);
 
@@ -12,6 +12,7 @@ const About = () => {
     const query = '*[_type == "abouts"]';
     client.fetch(query).then((data) => setAbouts(data));
   }, []);
+
   return (
     <>
       <h2 className='head-text'>
