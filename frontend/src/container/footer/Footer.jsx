@@ -33,6 +33,7 @@ const Footer = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    handleEmailChange();
   };
 
   const handleSubmit = () => {
@@ -51,8 +52,6 @@ const Footer = () => {
       setLoading(false);
       setIsFormSubmitted(true);
     });
-
-    handleEmailChange();
   };
 
   return (
