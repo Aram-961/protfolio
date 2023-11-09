@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion'
-import image from "../../constants/images";
+// import image from "../../constants/images";
 import { CgMenu } from "react-icons/cg";
 import { HiX } from "react-icons/hi";
 import "./Navbar.scss";

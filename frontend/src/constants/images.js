@@ -23,7 +23,7 @@ import about02 from "../assets/about02.png";
 import about03 from "../assets/about03.png";
 import about04 from "../assets/about04.png";
 
-import profile2 from "../assets/profile2.png";
+import profile2 from "../assets/myImage-removebg-preview.png";
 import circle from "../assets/circle.svg";
 import logo2 from "../assets/logo2.png";
 
@@ -34,7 +34,7 @@ import bolt from "../assets/bolt.png";
 import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
-import Aram from "../assets/Aram.png";
+import Aram from "../assets/myImage-removebg-preview.png";
 
 export default {
   email,
